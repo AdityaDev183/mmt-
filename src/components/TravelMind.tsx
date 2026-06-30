@@ -6,6 +6,7 @@ import { MapPin, Plane, Loader2, Compass, Wind, Coffee, Heart, AlertCircle, Cale
 import { TravelMindLogo } from './Logo';
 import { cn } from '@/lib/utils';
 import { useAuth } from '@/hooks/useAuth';
+import TravelBooking from './TravelBooking';
 
 const MOODS = [
   { id: 'stressed', label: 'Stressed', icon: <AlertCircle className="w-4 h-4" /> },
@@ -16,6 +17,7 @@ const MOODS = [
 ];
 
 export default function TravelMind() {
+  const [activeTab, setActiveTab] = useState<'recommend' | 'book'>('recommend');
   const [mood, setMood] = useState('stressed');
   const [budget, setBudget] = useState('5000');
   const [travelType, setTravelType] = useState('solo');
@@ -50,6 +52,29 @@ export default function TravelMind() {
 
   return (
     <div className="max-w-4xl mx-auto space-y-10">
+      <div className="flex justify-center gap-4 mb-4">
+        <button
+            onClick={() => setActiveTab('recommend')}
+            className={cn(
+                "px-6 py-2 rounded-full font-bold transition-all",
+                activeTab === 'recommend' ? "bg-white text-black" : "glass hover:bg-white/10"
+            )}
+        >
+            Personalized Recommendation
+        </button>
+        <button
+            onClick={() => setActiveTab('book')}
+            className={cn(
+                "px-6 py-2 rounded-full font-bold transition-all",
+                activeTab === 'book' ? "bg-white text-black" : "glass hover:bg-white/10"
+            )}
+        >
+            Booking Engine (MMT Style)
+        </button>
+      </div>
+
+      {activeTab === 'recommend' ? (
+      <>
       <div className="text-center space-y-4">
         <div className="flex justify-center">
             <TravelMindLogo size="lg" />
@@ -173,6 +198,10 @@ export default function TravelMind() {
           </motion.div>
         )}
       </AnimatePresence>
+      </>
+      ) : (
+        <TravelBooking />
+      )}
     </div>
   );
 }

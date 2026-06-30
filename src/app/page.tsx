@@ -142,20 +142,13 @@ export default function LandingPage() {
       <section id="pricing" className="py-20">
         <div className="container mx-auto px-4 text-center">
             <h2 className="text-3xl md:text-5xl font-bold mb-12">Simple Pricing</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            <div className="max-w-xl mx-auto">
                 <PricingCard
-                    title="Free"
+                    title="Public Beta"
                     price="₹0"
-                    features={["10 generations/day", "Basic AI Models", "Community Support"]}
-                    cta="Get Started"
-                    link="/dashboard"
-                />
-                <PricingCard
-                    title="Pro"
-                    price="₹999"
-                    period="/month"
-                    features={["100 generations/day", "Llama 3.1 70B & Nemotron", "TravelMind AI Full Access", "Priority Support"]}
-                    cta="Upgrade Now"
+                    period="/forever"
+                    features={["Unlimited generations/day", "Llama 3.1 70B & Nemotron Access", "TravelMind AI Full Suite", "Community Support"]}
+                    cta="Get Started Free 🎉"
                     highlighted
                     link="/dashboard"
                 />
