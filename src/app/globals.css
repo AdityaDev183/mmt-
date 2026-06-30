@@ -1,0 +1,89 @@
+@import "tailwindcss";
+
+@plugin "tailwindcss-animate";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+
+  --color-background: #0B0B0F;
+  --color-foreground: #F8F9FA;
+
+  --color-card: #15151E;
+  --color-card-foreground: #F8F9FA;
+
+  --color-popover: #15151E;
+  --color-popover-foreground: #F8F9FA;
+
+  --color-primary: #FF3B30; /* Red */
+  --color-primary-foreground: #FFFFFF;
+
+  --color-secondary: #FF9500; /* Orange */
+  --color-secondary-foreground: #FFFFFF;
+
+  --color-accent: #FFCC00; /* Yellow */
+  --color-accent-foreground: #000000;
+
+  --color-muted: #1C1C26;
+  --color-muted-foreground: #A1A1AA;
+
+  --color-border: #27272A;
+  --color-input: #27272A;
+  --color-ring: #FF3B30;
+
+  --radius-lg: 0.75rem;
+  --radius-md: 0.5rem;
+  --radius-sm: 0.25rem;
+
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+
+  @keyframes accordion-down {
+    from {
+      height: 0;
+    }
+    to {
+      height: var(--radix-accordion-content-height);
+    }
+  }
+  @keyframes accordion-up {
+    from {
+      height: var(--radix-accordion-content-height);
+    }
+    to {
+      height: 0;
+    }
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+.glass {
+  @apply bg-white/5 backdrop-blur-lg border border-white/10;
+}
+
+.neon-red {
+  @apply text-primary drop-shadow-[0_0_10px_rgba(255,59,48,0.5)];
+}
+
+.neon-orange {
+  @apply text-secondary drop-shadow-[0_0_10px_rgba(255,149,0,0.5)];
+}
+
+.neon-yellow {
+  @apply text-accent drop-shadow-[0_0_10px_rgba(255,204,0,0.5)];
+}
+
+.bg-neon-gradient {
+  background: linear-gradient(135deg, #FF3B30 0%, #FF9500 50%, #FFCC00 100%);
+}
